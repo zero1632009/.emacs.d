@@ -14,8 +14,8 @@
                     :box nil)
 (defun my-simple-modeline ()
   (let* ((buffer-name (buffer-name))
-         (modified (if (buffer-modified-p) "+" ""))
-         (readonly (if buffer-read-only "-" "")))
+         (modified (if (buffer-modified-p) "[+]" ""))
+         (readonly (if buffer-read-only "[-]" "")))
     (format " %s%s%s" buffer-name modified readonly)))
 (setq-default mode-line-format
               '((:eval (my-simple-modeline))))
@@ -28,3 +28,7 @@
   (set-face-attribute 'default nil :font "JetBrainsMono Nerd Font-12"))
  ((string-equal system-type "darwin") ; macOS
   (set-face-attribute 'default nil :font "Menlo-12")))
+
+(set-face-attribute 'default nil
+                    :font "JetBrains Mono Nerd Font"
+                    :height 120)
